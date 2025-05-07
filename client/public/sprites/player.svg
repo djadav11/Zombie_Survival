@@ -1,0 +1,13 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body -->
+  <circle cx="24" cy="24" r="20" fill="#4CAF50" />
+  
+  <!-- Details -->
+  <rect x="16" y="16" width="6" height="6" rx="1" fill="#388E3C" />
+  <rect x="26" y="16" width="6" height="6" rx="1" fill="#388E3C" />
+  <rect x="20" y="30" width="8" height="2" rx="1" fill="#388E3C" />
+  
+  <!-- Gun -->
+  <rect x="28" y="22" width="20" height="4" rx="1" fill="#424242" />
+  <rect x="26" y="21" width="4" height="6" rx="1" fill="#616161" />
+</svg>

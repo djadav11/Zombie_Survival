@@ -1,0 +1,6 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bullet shape -->
+  <circle cx="8" cy="8" r="6" fill="#FFC107" />
+  <circle cx="8" cy="8" r="4" fill="#FF9800" />
+  <circle cx="6" cy="6" r="1.5" fill="#FFEB3B" />
+</svg>
