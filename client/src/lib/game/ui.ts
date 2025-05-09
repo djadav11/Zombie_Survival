@@ -6,7 +6,7 @@ export function createGameUI() {
   
   // Game title
   k.add([
-    k.text("Zombie Survival", { size: 36, font: "gameFont" }),
+    k.text("Zombie Survival", { size: 36 }), // Use default font
     k.pos(k.width() / 2, 50),
     k.anchor("center"),
     k.color(1, 1, 1),
@@ -23,7 +23,7 @@ export function createGameUI() {
   // Add control instructions
   controls.forEach((control, index) => {
     k.add([
-      k.text(control, { size: 16, font: "gameFont" }),
+      k.text(control, { size: 16 }), // Use default font
       k.pos(k.width() / 2, k.height() - 80 + (index * 20)),
       k.anchor("center"),
       k.color(0.8, 0.8, 0.8),
@@ -40,7 +40,7 @@ export function showCountdown(onComplete: () => void) {
   
   // Create the countdown text object
   const countdownText = k.add([
-    k.text(`${count}`, { size: 80, font: "gameFont" }),
+    k.text(`${count}`, { size: 80 }), // Use default font
     k.pos(k.width() / 2, k.height() / 2),
     k.anchor("center"),
     k.color(1, 1, 1),
@@ -55,10 +55,10 @@ export function showCountdown(onComplete: () => void) {
     if (count > 0) {
       countdownText.text = `${count}`;
       // Scale animation
-      countdownText.scale = 1.5;
+      countdownText.scale = k.vec2(1.5, 1.5);
       k.tween(
         countdownText.scale,
-        k.vec2(1),
+        k.vec2(1, 1),
         0.5,
         (val) => countdownText.scale = val,
         k.easings.easeOutElastic
@@ -68,10 +68,10 @@ export function showCountdown(onComplete: () => void) {
       countdownText.color = k.rgb(0, 1, 0);
       
       // Scale and fade animation
-      countdownText.scale = 1.5;
+      countdownText.scale = k.vec2(1.5, 1.5);
       k.tween(
         countdownText.scale,
-        k.vec2(0.5),
+        k.vec2(0.5, 0.5),
         0.5,
         (val) => countdownText.scale = val
       );

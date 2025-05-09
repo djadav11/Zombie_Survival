@@ -65,7 +65,7 @@ export function startGame(onGameOver: (score: number, wave: number) => void) {
         
         // Display wave complete message
         const waveCompleteText = k.add([
-          k.text(`Wave ${player.wave} complete!`, { size: 32, font: "gameFont" }),
+          k.text(`Wave ${player.wave} complete!`, { size: 32 }), // Use default font
           k.pos(k.width() / 2, k.height() / 2 - 50),
           k.color(1, 1, 1),
           k.anchor("center"),
@@ -74,7 +74,7 @@ export function startGame(onGameOver: (score: number, wave: number) => void) {
         ]);
         
         const nextWaveText = k.add([
-          k.text(`Next wave in ${WAVE_COOLDOWN} seconds...`, { size: 24, font: "gameFont" }),
+          k.text(`Next wave in ${WAVE_COOLDOWN} seconds...`, { size: 24 }), // Use default font
           k.pos(k.width() / 2, k.height() / 2),
           k.color(1, 1, 1),
           k.anchor("center"),
@@ -121,7 +121,7 @@ function startWave() {
   
   // Display wave start message
   const waveStartText = k.add([
-    k.text(`Wave ${player.wave}`, { size: 40, font: "gameFont" }),
+    k.text(`Wave ${player.wave}`, { size: 40 }), // Use default font
     k.pos(k.width() / 2, k.height() / 2),
     k.color(1, 0.5, 0.5),
     k.anchor("center"),
