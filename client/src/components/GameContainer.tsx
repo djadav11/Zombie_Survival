@@ -4,7 +4,6 @@ import { loadGameAssets } from "../lib/game/sprites";
 import { startGame, stopGame } from "../lib/game/levels";
 import { createGameUI, showCountdown, drawGameBoundaries } from "../lib/game/ui";
 import { initGameSounds, cleanupSounds } from "../lib/game/sounds";
-import { createBackground } from "../lib/game/background";
 
 interface GameContainerProps {
   onGameOver: (score: number, wave: number) => void;
@@ -32,9 +31,6 @@ export default function GameContainer({ onGameOver }: GameContainerProps) {
 
     // Set up game on first render
     const setupGame = () => {
-      // Create detailed background first (so it's behind everything)
-      createBackground();
-      
       // Create UI elements
       createGameUI();
       
@@ -68,17 +64,10 @@ export default function GameContainer({ onGameOver }: GameContainerProps) {
 
   return (
     <div className="relative w-full max-w-[800px] h-[600px] bg-black rounded-lg overflow-hidden">
-      {/* Loading overlay with zombie-themed animation */}
+      {/* Loading overlay */}
       {isLoading && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 z-10">
-          <div className="w-16 h-16 mb-4 relative">
-            <div className="w-full h-full rounded-full border-4 border-red-800 border-t-red-400 animate-spin"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-            </div>
-          </div>
-          <div className="text-red-500 text-2xl font-bold animate-pulse">Loading Zombie Survival...</div>
-          <div className="text-gray-400 mt-2 text-sm">Grab your weapons!</div>
+        <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10">
+          <div className="text-white text-2xl">Loading...</div>
         </div>
       )}
       
