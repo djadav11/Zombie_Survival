@@ -49,7 +49,8 @@ export function createBackground() {
   k.add([
     k.rect(k.width(), k.height()),
     k.pos(0, 0),
-    k.color(0, 0, 0, 0.1), // Very subtle darkening
+    k.color(0, 0, 0),
+    k.opacity(0.1), // Very subtle darkening
     k.z(-5), // Above tiles but below everything else
   ]);
   
@@ -74,7 +75,8 @@ function drawCrack(k: any, x: number, y: number, size: number) {
         p2: k.vec2(endX, endY),
         width: 1,
       }),
-      k.color(0.1, 0.1, 0.1, 0.7),
+      k.color(0.1, 0.1, 0.1),
+      k.opacity(0.7),
       k.z(-9),
     ]);
   }
@@ -96,7 +98,8 @@ function drawBloodSplatter(k: any, x: number, y: number, size: number) {
     k.add([
       k.circle(splatterSize),
       k.pos(posX, posY),
-      k.color(0.5, 0, 0, k.rand(0.4, 0.7)),
+      k.color(0.5, 0, 0),
+      k.opacity(k.rand(0.4, 0.7)),
       k.z(-9),
     ]);
   }
