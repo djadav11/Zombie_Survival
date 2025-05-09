@@ -57,7 +57,7 @@ function createBackgroundEffects(k: any) {
       k.pos(pos[0], pos[1]),
       k.color(0.2, 0.2, 0.3),
       k.opacity(0.4),
-      k.outline(2, k.rgba(0.4, 0.4, 0.7, 0.5)),
+      k.outline(2, k.rgb(0.4, 0.4, 0.7)),
       k.z(-8),
     ]);
     
