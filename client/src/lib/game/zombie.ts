@@ -114,63 +114,17 @@ export function spawnZombie(wave: number, target: GameObj) {
       const { playHit } = useAudio.getState();
       playHit();
       
-      // Enhanced particles for zombie death
-      // Blood splatter
-      for (let i = 0; i < 15; i++) {
+      // Particles for zombie death
+      for (let i = 0; i < 10; i++) {
         k.add([
-          k.circle(k.rand(2, 5)),
+          k.rect(4, 4),
           k.pos(zombie.pos),
           k.color(0.8, 0.2, 0.2),
-          k.lifespan(k.rand(0.3, 0.8)),
-          k.move(k.Vec2.fromAngle(k.rand(0, 360)), k.rand(50, 200)),
+          k.lifespan(0.5),
+          k.move(k.Vec2.fromAngle(k.rand(0, 360)), k.rand(50, 150)),
           k.scale(1),
-          k.opacity(0.8),
         ]);
       }
-      
-      // Smoky decay effect
-      for (let i = 0; i < 8; i++) {
-        k.add([
-          k.circle(8),
-          k.pos(zombie.pos),
-          k.color(0.3, 0.1, 0.1),
-          k.opacity(0.4),
-          k.lifespan(0.7),
-          k.move(k.Vec2.fromAngle(k.rand(0, 360)), k.rand(20, 60)),
-          k.scale(k.rand(0.5, 1.5)),
-        ]);
-      }
-      
-      // Shock wave
-      const shockwave = k.add([
-        k.circle(5),
-        k.pos(zombie.pos),
-        k.opacity(0.5),
-        k.color(0.9, 0.3, 0.3),
-        k.outline(2, k.rgb(0.5, 0, 0)),
-        k.anchor("center"),
-        k.lifespan(0.3),
-      ]);
-      
-      // Animate shockwave expansion
-      k.tween(
-        5,
-        40,
-        0.3,
-        (val) => {
-          if (shockwave.exists()) {
-            // Set radius property of the circle through the proper API
-            const radius = val;
-            
-            // Recreate circle with new size instead of directly modifying radius
-            shockwave.use(k.circle(radius));
-            
-            // Adjust opacity based on size
-            shockwave.opacity = 0.5 - (val / 80);
-          }
-        },
-        k.easings.easeOutQuart
-      );
       
       // Destroy the zombie
       zombie.destroy();

@@ -1,21 +1,6 @@
 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Enhanced bullet with energy trail -->
-  <path d="M4 8L1 10V6L4 8Z" fill="#FF9800" />
-  <path d="M4 8L2 9V7L4 8Z" fill="#FFEB3B" />
-  
-  <!-- Bullet body -->
-  <circle cx="8" cy="8" r="4" fill="#FF3D00" />
-  <circle cx="8" cy="8" r="3" fill="#FF9100" />
-  
-  <!-- Energy core -->
-  <circle cx="8" cy="8" r="2" fill="#FFECB3" />
-  <circle cx="8" cy="8" r="1" fill="#FFFFFF" />
-  
-  <!-- Impact highlights -->
-  <circle cx="6.5" cy="6.5" r="0.8" fill="#FFFFFF" />
-  <circle cx="9" cy="7" r="0.4" fill="#FFFFFF" />
-  
-  <!-- Motion blur -->
-  <path d="M14 8L12 6V10L14 8Z" fill="#FF9800" opacity="0.5" />
-  <path d="M15 8L13.5 7V9L15 8Z" fill="#FFEB3B" opacity="0.3" />
+  <!-- Bullet shape -->
+  <circle cx="8" cy="8" r="6" fill="#FFC107" />
+  <circle cx="8" cy="8" r="4" fill="#FF9800" />
+  <circle cx="6" cy="6" r="1.5" fill="#FFEB3B" />
 </svg>

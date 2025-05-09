@@ -80,19 +80,8 @@ export function createPlayer() {
     // Play hit sound when player gets hurt
     playHit();
     
-    // Flash red on damage with better visual effect
+    // Flash red on damage
     player.color = k.rgb(1, 0, 0);
-    // Create a damage flash effect
-    for (let i = 0; i < 5; i++) {
-      k.add([
-        k.rect(5, 5),
-        k.pos(player.pos),
-        k.color(1, 0, 0),
-        k.lifespan(0.3),
-        k.move(k.Vec2.fromAngle(k.rand(0, 360)), k.rand(60, 120)),
-        k.scale(1),
-      ]);
-    }
     k.wait(0.1, () => {
       player.color = k.rgb(1, 1, 1);
     });
@@ -123,18 +112,6 @@ function playerShoot(player: GameObj) {
   const bulletSpeed = 500;
   const bulletDir = k.vec2(Math.cos(angle), Math.sin(angle));
   
-  // Create muzzle flash effect
-  for (let i = 0; i < 3; i++) {
-    k.add([
-      k.circle(3),
-      k.pos(player.pos.add(bulletDir.scale(20))),
-      k.color(1, 0.8, 0),
-      k.lifespan(0.1),
-      k.scale(k.rand(0.5, 1.5)),
-      k.anchor("center"),
-    ]);
-  }
-  
   // Create bullet
   const bullet = k.add([
     k.sprite("bullet"),
@@ -149,22 +126,6 @@ function playerShoot(player: GameObj) {
     k.color(1, 1, 0),
     "bullet",
   ]);
-  
-  // Add trailing particles
-  k.onUpdate(() => {
-    if (bullet.exists()) {
-      if (k.rand(0, 100) > 70) { // 30% chance per frame to spawn a particle
-        k.add([
-          k.circle(2),
-          k.pos(bullet.pos),
-          k.color(1, k.rand(0.5, 0.8), 0),
-          k.lifespan(0.2),
-          k.opacity(0.7),
-          k.scale(k.rand(0.3, 0.6)),
-        ]);
-      }
-    }
-  });
   
   // Play shoot sound
   k.play("hitSound", {
