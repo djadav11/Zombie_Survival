@@ -13,7 +13,7 @@ export function initKaboom(canvasElement: HTMLCanvasElement) {
     canvas: canvasElement,
     width: 800,
     height: 600,
-    background: [20, 20, 20],
+    background: [40, 10, 10], // Darker red for zombie-themed background
     scale: 1,
     debug: false,
     crisp: true,
