@@ -80,10 +80,27 @@ export function createPlayer() {
     // Play hit sound when player gets hurt
     playHit();
     
-    // Flash red on damage
+    // More dramatic damage feedback
+    // 1. Flash red
     player.color = k.rgb(1, 0, 0);
-    k.wait(0.1, () => {
+    
+    // 2. Slight knockback effect (random direction)
+    const knockbackAngle = k.rand(0, 360);
+    const knockbackDir = k.vec2(
+      Math.cos(knockbackAngle * (Math.PI / 180)),
+      Math.sin(knockbackAngle * (Math.PI / 180))
+    ).scale(15); // Knockback distance
+    
+    const origPos = player.pos.clone();
+    player.pos = player.pos.add(knockbackDir);
+    
+    // 3. Screen shake effect
+    k.shake(5);
+    
+    // Return to normal after a moment
+    k.wait(0.15, () => {
       player.color = k.rgb(1, 1, 1);
+      player.pos = origPos;
     });
     
     // Game over if health reaches zero

@@ -5,8 +5,8 @@ import { useAudio } from "../stores/useAudio";
 // Zombie properties
 const ZOMBIE_SPEED_BASE = 60;
 const ZOMBIE_HEALTH_BASE = 40;
-const ZOMBIE_DAMAGE = 10;
-const ZOMBIE_ATTACK_COOLDOWN = 0.8; // Seconds between attacks
+const ZOMBIE_DAMAGE = 12; // Increased damage per hit
+const ZOMBIE_ATTACK_COOLDOWN = 0.35; // Seconds between attacks (reduced for more frequent hits)
 
 // Spawn a new zombie at a random position around the edges
 export function spawnZombie(wave: number, target: GameObj) {
@@ -86,6 +86,18 @@ export function spawnZombie(wave: number, target: GameObj) {
     
     // Damage the player
     player.hurt(zombie.damage);
+    
+    // Attack animation - zombie "lunges" slightly toward player
+    const origPos = zombie.pos.clone();
+    const toPlayerDir = player.pos.sub(zombie.pos).unit().scale(10);
+    zombie.pos = zombie.pos.add(toPlayerDir);
+    
+    // Return to original position
+    k.wait(0.15, () => {
+      if (zombie.exists()) {
+        zombie.pos = origPos;
+      }
+    });
   });
   
   // Zombie hit by bullet
