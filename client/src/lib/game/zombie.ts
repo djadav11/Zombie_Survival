@@ -6,7 +6,7 @@ import { useAudio } from "../stores/useAudio";
 const ZOMBIE_SPEED_BASE = 60;
 const ZOMBIE_HEALTH_BASE = 40;
 const ZOMBIE_DAMAGE = 12; // Increased damage per hit
-const ZOMBIE_ATTACK_COOLDOWN = 0.35; // Seconds between attacks (reduced for more frequent hits)
+const ZOMBIE_ATTACK_COOLDOWN = 0.10; // Very short cooldown for rapid attacks
 
 // Spawn a new zombie at a random position around the edges
 export function spawnZombie(wave: number, target: GameObj) {
