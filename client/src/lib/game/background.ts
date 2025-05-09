@@ -69,12 +69,17 @@ function drawCrack(k: any, x: number, y: number, size: number) {
     const endX = x + Math.cos(lineAngle * (Math.PI/180)) * lineLength;
     const endY = y + Math.sin(lineAngle * (Math.PI/180)) * lineLength;
     
+    // Instead of using line, draw a thin rectangle
+    const width = 1;
+    const length = Math.sqrt(Math.pow(endX - x, 2) + Math.pow(endY - y, 2));
+    const midX = (x + endX) / 2;
+    const midY = (y + endY) / 2;
+    
     k.add([
-      k.line({
-        p1: k.vec2(x, y),
-        p2: k.vec2(endX, endY),
-        width: 1,
-      }),
+      k.rect(length, width),
+      k.pos(midX, midY),
+      k.anchor("center"),
+      k.rotate(lineAngle),
       k.color(0.1, 0.1, 0.1),
       k.opacity(0.7),
       k.z(-9),
