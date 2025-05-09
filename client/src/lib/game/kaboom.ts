@@ -13,7 +13,7 @@ export function initKaboom(canvasElement: HTMLCanvasElement) {
     canvas: canvasElement,
     width: 800,
     height: 600,
-    background: [20, 20, 20],
+    background: [40, 40, 60], // Dark blue-gray background
     scale: 1,
     debug: false,
     crisp: true,

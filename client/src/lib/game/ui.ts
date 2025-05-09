@@ -4,6 +4,9 @@ import { getKaboom } from "./kaboom";
 export function createGameUI() {
   const k = getKaboom();
   
+  // Add background details for visual interest
+  createBackgroundEffects(k);
+  
   // Game title
   k.add([
     k.text("Zombie Survival", { size: 36 }), // Use default font
