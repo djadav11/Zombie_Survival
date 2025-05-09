@@ -4,6 +4,7 @@ import { loadGameAssets } from "../lib/game/sprites";
 import { startGame, stopGame } from "../lib/game/levels";
 import { createGameUI, showCountdown, drawGameBoundaries } from "../lib/game/ui";
 import { initGameSounds, cleanupSounds } from "../lib/game/sounds";
+import { createBackground } from "../lib/game/background";
 
 interface GameContainerProps {
   onGameOver: (score: number, wave: number) => void;
@@ -31,6 +32,9 @@ export default function GameContainer({ onGameOver }: GameContainerProps) {
 
     // Set up game on first render
     const setupGame = () => {
+      // Create detailed background first (so it's behind everything)
+      createBackground();
+      
       // Create UI elements
       createGameUI();
       
