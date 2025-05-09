@@ -43,7 +43,8 @@ export function spawnZombie(wave: number, target: GameObj) {
   const zombie = k.add([
     k.sprite("zombie"),
     k.pos(spawnPos),
-    k.area({ width: 40, height: 40 }),
+    k.area(),
+    k.area({ shape: new k.Rect(k.vec2(0), 40, 40) }),
     k.health(zombieHealth),
     k.scale(1),
     k.anchor("center"),
