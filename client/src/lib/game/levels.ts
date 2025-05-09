@@ -1,6 +1,6 @@
 import { getKaboom } from "./kaboom";
 import { createPlayer, updatePlayerUI } from "./player";
-import { spawnZombie, getZombieCount } from "./zombie";
+import { spawnZombie, getZombieCount, destroyAllZombies } from "./zombie";
 import { GameObj } from "kaboom";
 import { useAudio } from "../stores/useAudio";
 
@@ -18,6 +18,7 @@ let zombiesLeftToSpawn = 0;
 let spawnInterval = 0.5; // Time between zombie spawns
 let lastSpawnTime = 0;
 let player: GameObj | null = null;
+let gameOverCallback: ((score: number, wave: number) => void) | null = null;
 
 // Start the main game
 export function startGame(onGameOver: (score: number, wave: number) => void) {
@@ -87,7 +88,15 @@ export function startGame(onGameOver: (score: number, wave: number) => void) {
       waveTimer += k.dt();
       if (waveTimer >= WAVE_COOLDOWN) {
         player.wave++;
-        startWave();
+        
+        // Check if player has completed all 10 waves
+        if (player.wave > 10) {
+          // Player wins the game!
+          gameWin();
+        } else {
+          // Start the next wave
+          startWave();
+        }
       }
     }
   });
@@ -103,6 +112,71 @@ export function startGame(onGameOver: (score: number, wave: number) => void) {
         onGameOver(player.score, player.wave);
       }
     });
+  });
+}
+
+// Game win function - triggered when player completes all 10 waves
+function gameWin() {
+  const k = getKaboom();
+  gameRunning = false;
+  
+  // Clear any remaining zombies
+  destroyAllZombies();
+  
+  // Ensure we have a valid player object
+  if (!player) return;
+  
+  // Add a victory message
+  k.add([
+    k.text("VICTORY!", { size: 80 }),
+    k.pos(k.width() / 2, k.height() / 2 - 50),
+    k.color(0.8, 0.8, 0.2), // Gold color
+    k.anchor("center"),
+    k.scale(1),
+  ]);
+  
+  k.add([
+    k.text(`You survived all 10 waves!`, { size: 32 }),
+    k.pos(k.width() / 2, k.height() / 2 + 20),
+    k.color(1, 1, 1),
+    k.anchor("center"),
+    k.scale(1),
+  ]);
+  
+  const finalScore = player.score;
+  const finalWave = player.wave;
+  
+  k.add([
+    k.text(`Final Score: ${finalScore}`, { size: 32 }),
+    k.pos(k.width() / 2, k.height() / 2 + 60),
+    k.color(1, 1, 1),
+    k.anchor("center"),
+    k.scale(1),
+  ]);
+  
+  // Add confetti-like particles for celebration
+  for (let i = 0; i < 100; i++) {
+    k.add([
+      k.rect(8, 8),
+      k.pos(k.rand(0, k.width()), k.rand(0, k.height())),
+      k.color(k.rand(0, 1), k.rand(0, 1), k.rand(0, 1)),
+      k.lifespan(3),
+      k.move(k.Vec2.fromAngle(k.rand(0, 360)), k.rand(50, 150)),
+      k.scale(k.rand(0.5, 2)),
+    ]);
+  }
+  
+  // Capture onGameOver from the parent scope
+  const gameOverCallback = (score: number, wave: number) => {
+    if (player) {
+      onGameOver(score, wave);
+    }
+  };
+  
+  // Wait a moment before triggering game over with win status
+  k.wait(4, () => {
+    // Pass final score and wave to the game over handler
+    gameOverCallback(finalScore, finalWave);
   });
 }
 
