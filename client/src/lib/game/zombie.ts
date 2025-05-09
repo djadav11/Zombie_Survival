@@ -159,7 +159,13 @@ export function spawnZombie(wave: number, target: GameObj) {
         0.3,
         (val) => {
           if (shockwave.exists()) {
-            shockwave.radius = val;
+            // Set radius property of the circle through the proper API
+            const radius = val;
+            
+            // Recreate circle with new size instead of directly modifying radius
+            shockwave.use(k.circle(radius));
+            
+            // Adjust opacity based on size
             shockwave.opacity = 0.5 - (val / 80);
           }
         },

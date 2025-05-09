@@ -240,7 +240,10 @@ export function drawGameBoundaries() {
       
       // Apply to scale and opacity
       dot.opacity = 0.4 + (pulse * 0.6);
-      dot.radius = 2 + (pulse * 2);
+      
+      // Update the circle size by recreating it
+      const newRadius = 2 + (pulse * 2);
+      dot.use(k.circle(newRadius));
       
       // Create occasional "spark" effect
       if (k.rand(0, 1000) < 5) { // 0.5% chance per frame
