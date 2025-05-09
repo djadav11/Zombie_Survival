@@ -92,8 +92,8 @@ export function startGame(onGameOver: (score: number, wave: number) => void) {
       if (waveTimer >= WAVE_COOLDOWN) {
         player.wave++;
         
-        // Check if player has completed all 10 waves
-        if (player.wave > 10) {
+        // Check if player has completed all 8 waves
+        if (player.wave > 8) {
           // Player wins the game!
           gameWin();
         } else {
@@ -118,7 +118,7 @@ export function startGame(onGameOver: (score: number, wave: number) => void) {
   });
 }
 
-// Game win function - triggered when player completes all 10 waves
+// Game win function - triggered when player completes all 8 waves
 function gameWin() {
   const k = getKaboom();
   gameRunning = false;
@@ -139,7 +139,7 @@ function gameWin() {
   ]);
   
   k.add([
-    k.text(`You survived all 10 waves!`, { size: 32 }),
+    k.text(`You survived all 8 waves!`, { size: 32 }),
     k.pos(k.width() / 2, k.height() / 2 + 20),
     k.color(1, 1, 1),
     k.anchor("center"),
