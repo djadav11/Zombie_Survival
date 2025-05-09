@@ -32,8 +32,8 @@ export function loadGameAssets() {
   k.loadSound("hitSound", "/sounds/hit.mp3");
   k.loadSound("successSound", "/sounds/success.mp3");
   
-  // Load fonts
-  k.loadFont("gameFont", "inter");
+  // Use default system font instead of loading inter
+  // No need to load a font, we'll use the default
 
   console.log("All game assets loaded");
 }

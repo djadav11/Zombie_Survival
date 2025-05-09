@@ -16,7 +16,8 @@ export function createPlayer() {
   const player = k.add([
     k.sprite("player"),
     k.pos(k.width() / 2, k.height() / 2),
-    k.area({ width: 40, height: 40 }),
+    k.area(),
+    k.area({ shape: new k.Rect(k.vec2(0), 40, 40) }),
     k.health(PLAYER_MAX_HEALTH),
     k.color(1, 1, 1),
     k.rotate(0),
@@ -115,7 +116,8 @@ function playerShoot(player: GameObj) {
   const bullet = k.add([
     k.sprite("bullet"),
     k.pos(player.pos.add(bulletDir.scale(30))), // Start slightly in front of player
-    k.area({ width: 10, height: 10 }),
+    k.area(),
+    k.area({ shape: new k.Rect(k.vec2(0), 10, 10) }),
     k.scale(0.5),
     k.anchor("center"),
     k.rotate(player.angle),
@@ -143,7 +145,7 @@ export function updatePlayerUI(player: GameObj) {
     pos: k.vec2(20, 20),
     width: 200,
     height: 20,
-    fill: k.rgb(50, 50, 50),
+    color: k.rgb(50, 50, 50), // Use color instead of fill
   });
   
   // Current health
@@ -151,7 +153,7 @@ export function updatePlayerUI(player: GameObj) {
     pos: k.vec2(20, 20),
     width: (player.hp() / PLAYER_MAX_HEALTH) * 200,
     height: 20,
-    fill: player.hp() < 30 
+    color: player.hp() < 30  // Use color instead of fill
       ? k.rgb(255, 50, 50) 
       : player.hp() < 60 
       ? k.rgb(255, 200, 50)
@@ -163,7 +165,7 @@ export function updatePlayerUI(player: GameObj) {
     text: `HP: ${Math.floor(player.hp())}`,
     pos: k.vec2(30, 25),
     size: 16,
-    font: "gameFont",
+    // Use default font
     color: k.rgb(255, 255, 255),
   });
   
@@ -172,7 +174,7 @@ export function updatePlayerUI(player: GameObj) {
     text: `Score: ${player.score}`,
     pos: k.vec2(k.width() - 150, 25),
     size: 16,
-    font: "gameFont",
+    // Use default font
     color: k.rgb(255, 255, 255),
   });
   
@@ -180,7 +182,7 @@ export function updatePlayerUI(player: GameObj) {
     text: `Wave: ${player.wave}`,
     pos: k.vec2(k.width() - 150, 50),
     size: 16,
-    font: "gameFont",
+    // Use default font
     color: k.rgb(255, 255, 255),
   });
 }
