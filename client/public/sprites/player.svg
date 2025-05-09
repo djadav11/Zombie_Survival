@@ -1,30 +1,13 @@
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Body base -->
+  <!-- Body -->
   <circle cx="24" cy="24" r="20" fill="#4CAF50" />
   
-  <!-- Body shadow -->
-  <path d="M24 4C13.0589 4 4 13.0589 4 24C4 34.9411 13.0589 44 24 44C34.9411 44 44 34.9411 44 24C44 13.0589 34.9411 4 24 4ZM24 40C15.1782 40 8 32.8218 8 24C8 15.1782 15.1782 8 24 8C32.8218 8 40 15.1782 40 24C40 32.8218 32.8218 40 24 40Z" fill="#388E3C" opacity="0.5" />
+  <!-- Details -->
+  <rect x="16" y="16" width="6" height="6" rx="1" fill="#388E3C" />
+  <rect x="26" y="16" width="6" height="6" rx="1" fill="#388E3C" />
+  <rect x="20" y="30" width="8" height="2" rx="1" fill="#388E3C" />
   
-  <!-- Tactical vest -->
-  <path d="M16 23C16 17.4772 19.5817 13 24 13C28.4183 13 32 17.4772 32 23V33C32 33.5523 31.5523 34 31 34H17C16.4477 34 16 33.5523 16 33V23Z" fill="#2D5F2D" />
-  <path d="M20 23H22V34H20V23Z" fill="#1B3A1B" />
-  <path d="M26 23H28V34H26V23Z" fill="#1B3A1B" />
-  <path d="M22 15H26V19H22V15Z" fill="#1B3A1B" />
-  
-  <!-- Face details -->
-  <circle cx="19" cy="19" r="3" fill="#F5F5F5" />
-  <circle cx="29" cy="19" r="3" fill="#F5F5F5" />
-  <circle cx="19" cy="19" r="1.5" fill="#212121" />
-  <circle cx="29" cy="19" r="1.5" fill="#212121" />
-  
-  <!-- Mouth -->
-  <path d="M22 26H26" stroke="#388E3C" stroke-width="1.5" stroke-linecap="round" />
-  
-  <!-- Gun details -->
-  <rect x="28" y="22" width="18" height="4" rx="1" fill="#424242" />
+  <!-- Gun -->
+  <rect x="28" y="22" width="20" height="4" rx="1" fill="#424242" />
   <rect x="26" y="21" width="4" height="6" rx="1" fill="#616161" />
-  <rect x="40" y="21" width="4" height="3" rx="1" fill="#212121" />
-  <rect x="30" y="26" width="2" height="2" rx="0.5" fill="#212121" />
-  <rect x="30" y="20" width="10" height="1" rx="0.5" fill="#212121" />
-  <rect x="38" y="23" width="1" height="2" rx="0.5" fill="#B0BEC5" />
 </svg>

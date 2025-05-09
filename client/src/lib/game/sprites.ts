@@ -27,9 +27,6 @@ export function loadGameAssets() {
 
   // Load bullet sprite
   k.loadSprite("bullet", "/sprites/bullet.svg");
-  
-  // Load background sprite
-  k.loadSprite("background", "/sprites/background.svg");
 
   // Load sounds
   k.loadSound("hitSound", "/sounds/hit.mp3");

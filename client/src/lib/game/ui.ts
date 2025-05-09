@@ -90,21 +90,12 @@ export function showCountdown(onComplete: () => void) {
 export function drawGameBoundaries() {
   const k = getKaboom();
   
-  // Add background
-  k.add([
-    k.sprite("background"),
-    k.pos(0, 0),
-    k.scale(1),
-    k.anchor("topleft"),
-    k.z(-10), // Behind everything
-  ]);
-  
   // Top wall
   k.add([
-    k.sprite("wall"),
-    k.scale(k.width() / 100, 20 / 100),
+    k.rect(k.width(), 20),
     k.pos(0, 0),
-    k.opacity(0.9),
+    k.color(0.3, 0.3, 0.3),
+    k.opacity(0.7),
     k.area(),
     k.body({ isStatic: true }),
     "wall",
@@ -112,10 +103,10 @@ export function drawGameBoundaries() {
   
   // Bottom wall
   k.add([
-    k.sprite("wall"),
-    k.scale(k.width() / 100, 20 / 100),
+    k.rect(k.width(), 20),
     k.pos(0, k.height() - 20),
-    k.opacity(0.9),
+    k.color(0.3, 0.3, 0.3),
+    k.opacity(0.7),
     k.area(),
     k.body({ isStatic: true }),
     "wall",
@@ -123,10 +114,10 @@ export function drawGameBoundaries() {
   
   // Left wall
   k.add([
-    k.sprite("wall"),
-    k.scale(20 / 100, k.height() / 100),
+    k.rect(20, k.height()),
     k.pos(0, 0),
-    k.opacity(0.9),
+    k.color(0.3, 0.3, 0.3),
+    k.opacity(0.7),
     k.area(),
     k.body({ isStatic: true }),
     "wall",
@@ -134,10 +125,10 @@ export function drawGameBoundaries() {
   
   // Right wall
   k.add([
-    k.sprite("wall"),
-    k.scale(20 / 100, k.height() / 100),
+    k.rect(20, k.height()),
     k.pos(k.width() - 20, 0),
-    k.opacity(0.9),
+    k.color(0.3, 0.3, 0.3),
+    k.opacity(0.7),
     k.area(),
     k.body({ isStatic: true }),
     "wall",
