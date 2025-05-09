@@ -25,6 +25,9 @@ export function startGame(onGameOver: (score: number, wave: number) => void) {
   const k = getKaboom();
   const { playSuccess } = useAudio.getState();
   
+  // Save the callback for later use
+  gameOverCallback = onGameOver;
+  
   // Reset game state
   gameRunning = true;
   
@@ -108,8 +111,8 @@ export function startGame(onGameOver: (score: number, wave: number) => void) {
     // Wait a moment before triggering game over
     k.wait(1, () => {
       // Pass final score and wave to the game over handler
-      if (player) {
-        onGameOver(player.score, player.wave);
+      if (player && gameOverCallback) {
+        gameOverCallback(player.score, player.wave);
       }
     });
   });
@@ -166,17 +169,12 @@ function gameWin() {
     ]);
   }
   
-  // Capture onGameOver from the parent scope
-  const gameOverCallback = (score: number, wave: number) => {
-    if (player) {
-      onGameOver(score, wave);
-    }
-  };
-  
   // Wait a moment before triggering game over with win status
   k.wait(4, () => {
     // Pass final score and wave to the game over handler
-    gameOverCallback(finalScore, finalWave);
+    if (gameOverCallback) {
+      gameOverCallback(finalScore, finalWave);
+    }
   });
 }
 
@@ -211,4 +209,5 @@ function startWave() {
 export function stopGame() {
   gameRunning = false;
   player = null;
+  gameOverCallback = null;
 }
