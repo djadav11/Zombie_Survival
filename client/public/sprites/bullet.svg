@@ -1,6 +1,21 @@
 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Bullet shape -->
+  <!-- Bullet base -->
   <circle cx="8" cy="8" r="6" fill="#FFC107" />
   <circle cx="8" cy="8" r="4" fill="#FF9800" />
+  
+  <!-- Bullet glow effect -->
+  <circle cx="8" cy="8" r="7" fill="#FFC107" opacity="0.4" />
+  <circle cx="8" cy="8" r="8" fill="#FFC107" opacity="0.2" />
+  
+  <!-- Highlight -->
   <circle cx="6" cy="6" r="1.5" fill="#FFEB3B" />
+  <circle cx="5" cy="5" r="0.8" fill="white" />
+  
+  <!-- Bullet trail effect -->
+  <path d="M3 8H1" stroke="#FFC107" stroke-width="1" opacity="0.7" />
+  <path d="M2 9L0.5 10" stroke="#FFC107" stroke-width="0.8" opacity="0.6" />
+  <path d="M2 7L0.5 6" stroke="#FFC107" stroke-width="0.8" opacity="0.6" />
+  
+  <!-- Energy wave effect -->
+  <path d="M12.5 8C12.5 10.4853 10.4853 12.5 8 12.5C5.51472 12.5 3.5 10.4853 3.5 8C3.5 5.51472 5.51472 3.5 8 3.5C10.4853 3.5 12.5 5.51472 12.5 8Z" stroke="#FFEB3B" stroke-width="0.4" />
 </svg>

@@ -1,0 +1,114 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background base -->
+  <rect width="800" height="600" fill="#1E1E1E" />
+  
+  <!-- Concrete texture pattern -->
+  <g opacity="0.1">
+    <rect x="0" y="0" width="100" height="100" fill="#FFFFFF" />
+    <rect x="100" y="0" width="100" height="100" fill="#EEEEEE" />
+    <rect x="200" y="0" width="100" height="100" fill="#FFFFFF" />
+    <rect x="300" y="0" width="100" height="100" fill="#EEEEEE" />
+    <rect x="400" y="0" width="100" height="100" fill="#FFFFFF" />
+    <rect x="500" y="0" width="100" height="100" fill="#EEEEEE" />
+    <rect x="600" y="0" width="100" height="100" fill="#FFFFFF" />
+    <rect x="700" y="0" width="100" height="100" fill="#EEEEEE" />
+    
+    <rect x="0" y="100" width="100" height="100" fill="#EEEEEE" />
+    <rect x="100" y="100" width="100" height="100" fill="#FFFFFF" />
+    <rect x="200" y="100" width="100" height="100" fill="#EEEEEE" />
+    <rect x="300" y="100" width="100" height="100" fill="#FFFFFF" />
+    <rect x="400" y="100" width="100" height="100" fill="#EEEEEE" />
+    <rect x="500" y="100" width="100" height="100" fill="#FFFFFF" />
+    <rect x="600" y="100" width="100" height="100" fill="#EEEEEE" />
+    <rect x="700" y="100" width="100" height="100" fill="#FFFFFF" />
+    
+    <rect x="0" y="200" width="100" height="100" fill="#FFFFFF" />
+    <rect x="100" y="200" width="100" height="100" fill="#EEEEEE" />
+    <rect x="200" y="200" width="100" height="100" fill="#FFFFFF" />
+    <rect x="300" y="200" width="100" height="100" fill="#EEEEEE" />
+    <rect x="400" y="200" width="100" height="100" fill="#FFFFFF" />
+    <rect x="500" y="200" width="100" height="100" fill="#EEEEEE" />
+    <rect x="600" y="200" width="100" height="100" fill="#FFFFFF" />
+    <rect x="700" y="200" width="100" height="100" fill="#EEEEEE" />
+    
+    <rect x="0" y="300" width="100" height="100" fill="#EEEEEE" />
+    <rect x="100" y="300" width="100" height="100" fill="#FFFFFF" />
+    <rect x="200" y="300" width="100" height="100" fill="#EEEEEE" />
+    <rect x="300" y="300" width="100" height="100" fill="#FFFFFF" />
+    <rect x="400" y="300" width="100" height="100" fill="#EEEEEE" />
+    <rect x="500" y="300" width="100" height="100" fill="#FFFFFF" />
+    <rect x="600" y="300" width="100" height="100" fill="#EEEEEE" />
+    <rect x="700" y="300" width="100" height="100" fill="#FFFFFF" />
+    
+    <rect x="0" y="400" width="100" height="100" fill="#FFFFFF" />
+    <rect x="100" y="400" width="100" height="100" fill="#EEEEEE" />
+    <rect x="200" y="400" width="100" height="100" fill="#FFFFFF" />
+    <rect x="300" y="400" width="100" height="100" fill="#EEEEEE" />
+    <rect x="400" y="400" width="100" height="100" fill="#FFFFFF" />
+    <rect x="500" y="400" width="100" height="100" fill="#EEEEEE" />
+    <rect x="600" y="400" width="100" height="100" fill="#FFFFFF" />
+    <rect x="700" y="400" width="100" height="100" fill="#EEEEEE" />
+    
+    <rect x="0" y="500" width="100" height="100" fill="#EEEEEE" />
+    <rect x="100" y="500" width="100" height="100" fill="#FFFFFF" />
+    <rect x="200" y="500" width="100" height="100" fill="#EEEEEE" />
+    <rect x="300" y="500" width="100" height="100" fill="#FFFFFF" />
+    <rect x="400" y="500" width="100" height="100" fill="#EEEEEE" />
+    <rect x="500" y="500" width="100" height="100" fill="#FFFFFF" />
+    <rect x="600" y="500" width="100" height="100" fill="#EEEEEE" />
+    <rect x="700" y="500" width="100" height="100" fill="#FFFFFF" />
+  </g>
+  
+  <!-- Cracks and floor details -->
+  <g opacity="0.5">
+    <path d="M100 300L200 350L300 300L400 400L500 350L600 400" stroke="#424242" stroke-width="1" />
+    <path d="M200 100L300 150L350 200L400 250L450 200" stroke="#424242" stroke-width="1" />
+    <path d="M500 150L600 100L650 150L700 200" stroke="#424242" stroke-width="1" />
+    <path d="M100 450L150 500L200 550L300 500" stroke="#424242" stroke-width="1" />
+    <path d="M400 500L500 550L600 500L650 550" stroke="#424242" stroke-width="1" />
+  </g>
+  
+  <!-- Blood stains scattered around -->
+  <g opacity="0.3">
+    <circle cx="150" cy="150" r="10" fill="#B71C1C" />
+    <circle cx="550" cy="250" r="15" fill="#B71C1C" />
+    <circle cx="350" cy="550" r="20" fill="#B71C1C" />
+    <circle cx="650" cy="450" r="12" fill="#B71C1C" />
+    <circle cx="250" cy="350" r="8" fill="#B71C1C" />
+    <path d="M100 200C90 180 110 180 100 200Z" fill="#B71C1C" />
+    <path d="M450 400C435 370 465 370 450 400Z" fill="#B71C1C" />
+    <path d="M700 350C685 320 715 320 700 350Z" fill="#B71C1C" />
+  </g>
+  
+  <!-- Vignette effect at edges -->
+  <rect width="800" height="100" fill="url(#topGradient)" />
+  <rect y="500" width="800" height="100" fill="url(#bottomGradient)" />
+  <rect width="100" height="600" fill="url(#leftGradient)" />
+  <rect x="700" width="100" height="600" fill="url(#rightGradient)" />
+  
+  <!-- Corner dark spots -->
+  <circle cx="0" cy="0" r="100" fill="#000000" opacity="0.4" />
+  <circle cx="800" cy="0" r="100" fill="#000000" opacity="0.4" />
+  <circle cx="0" cy="600" r="100" fill="#000000" opacity="0.4" />
+  <circle cx="800" cy="600" r="100" fill="#000000" opacity="0.4" />
+  
+  <!-- Definitions for gradients -->
+  <defs>
+    <linearGradient id="topGradient" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bottomGradient" x1="0" y1="600" x2="0" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="leftGradient" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rightGradient" x1="800" y1="0" x2="700" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

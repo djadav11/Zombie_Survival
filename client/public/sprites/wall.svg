@@ -2,27 +2,71 @@
   <!-- Main wall background -->
   <rect width="100" height="100" fill="#5D4037" />
   
-  <!-- Brick pattern -->
-  <rect x="0" y="0" width="50" height="20" fill="#6D4C41" />
-  <rect x="50" y="0" width="50" height="20" fill="#5D4037" />
+  <!-- Brick pattern with enhanced details -->
+  <g opacity="0.95">
+    <rect x="0" y="0" width="50" height="20" fill="#6D4C41" />
+    <rect x="50" y="0" width="50" height="20" fill="#5D4037" />
+    
+    <rect x="0" y="20" width="25" height="20" fill="#5D4037" />
+    <rect x="25" y="20" width="50" height="20" fill="#6D4C41" />
+    <rect x="75" y="20" width="25" height="20" fill="#5D4037" />
+    
+    <rect x="0" y="40" width="50" height="20" fill="#6D4C41" />
+    <rect x="50" y="40" width="50" height="20" fill="#5D4037" />
+    
+    <rect x="0" y="60" width="25" height="20" fill="#5D4037" />
+    <rect x="25" y="60" width="50" height="20" fill="#6D4C41" />
+    <rect x="75" y="60" width="25" height="20" fill="#5D4037" />
+    
+    <rect x="0" y="80" width="50" height="20" fill="#6D4C41" />
+    <rect x="50" y="80" width="50" height="20" fill="#5D4037" />
+  </g>
   
-  <rect x="0" y="20" width="25" height="20" fill="#5D4037" />
-  <rect x="25" y="20" width="50" height="20" fill="#6D4C41" />
-  <rect x="75" y="20" width="25" height="20" fill="#5D4037" />
+  <!-- Mortar lines between bricks -->
+  <path d="M0 20H100M0 40H100M0 60H100M0 80H100" stroke="#4E342E" stroke-width="1" opacity="0.8" />
+  <path d="M50 0V20M25 20V40M75 20V40M50 40V60M25 60V80M75 60V80M50 80V100" stroke="#4E342E" stroke-width="1" opacity="0.8" />
   
-  <rect x="0" y="40" width="50" height="20" fill="#6D4C41" />
-  <rect x="50" y="40" width="50" height="20" fill="#5D4037" />
+  <!-- Brick texture and details -->
+  <g opacity="0.5">
+    <path d="M5 5H15V15H5V5Z" fill="#8D6E63" />
+    <path d="M30 5H40V15H30V5Z" fill="#8D6E63" />
+    <path d="M55 5H65V15H55V5Z" fill="#8D6E63" />
+    <path d="M80 5H90V15H80V5Z" fill="#8D6E63" />
+    
+    <path d="M30 25H40V35H30V25Z" fill="#8D6E63" />
+    <path d="M55 25H65V35H55V25Z" fill="#8D6E63" />
+    
+    <path d="M5 45H15V55H5V45Z" fill="#8D6E63" />
+    <path d="M30 45H40V55H30V45Z" fill="#8D6E63" />
+    <path d="M55 45H65V55H55V45Z" fill="#8D6E63" />
+    <path d="M80 45H90V55H80V45Z" fill="#8D6E63" />
+    
+    <path d="M30 65H40V75H30V65Z" fill="#8D6E63" />
+    <path d="M55 65H65V75H55V65Z" fill="#8D6E63" />
+    
+    <path d="M5 85H15V95H5V85Z" fill="#8D6E63" />
+    <path d="M30 85H40V95H30V85Z" fill="#8D6E63" />
+    <path d="M55 85H65V95H55V85Z" fill="#8D6E63" />
+    <path d="M80 85H90V95H80V85Z" fill="#8D6E63" />
+  </g>
   
-  <rect x="0" y="60" width="25" height="20" fill="#5D4037" />
-  <rect x="25" y="60" width="50" height="20" fill="#6D4C41" />
-  <rect x="75" y="60" width="25" height="20" fill="#5D4037" />
+  <!-- Enhanced cracks for detail -->
+  <path d="M10 15L25 5" stroke="#4E342E" stroke-width="1.5" />
+  <path d="M60 25L75 45" stroke="#4E342E" stroke-width="1.5" />
+  <path d="M30 55L45 75" stroke="#4E342E" stroke-width="1.5" />
+  <path d="M80 85L95 65" stroke="#4E342E" stroke-width="1.5" />
   
-  <rect x="0" y="80" width="50" height="20" fill="#6D4C41" />
-  <rect x="50" y="80" width="50" height="20" fill="#5D4037" />
+  <!-- Additional cracks -->
+  <path d="M85 15L95 25" stroke="#4E342E" stroke-width="1" />
+  <path d="M15 65L25 75" stroke="#4E342E" stroke-width="1" />
+  <path d="M40 95L50 85" stroke="#4E342E" stroke-width="1" />
   
-  <!-- Cracks for detail -->
-  <path d="M10 15L25 5" stroke="#4E342E" stroke-width="1" />
-  <path d="M60 25L75 45" stroke="#4E342E" stroke-width="1" />
-  <path d="M30 55L45 75" stroke="#4E342E" stroke-width="1" />
-  <path d="M80 85L95 65" stroke="#4E342E" stroke-width="1" />
+  <!-- Blood stains -->
+  <path d="M75 15C68 5 84 5 75 15Z" fill="#B71C1C" opacity="0.4" />
+  <path d="M15 85C8 75 24 75 15 85Z" fill="#B71C1C" opacity="0.4" />
+  <circle cx="65" cy="65" r="5" fill="#B71C1C" opacity="0.3" />
+  
+  <!-- Moss/dirt details -->
+  <path d="M5 30C0 20 12 20 5 30Z" fill="#2E7D32" opacity="0.3" />
+  <path d="M95 70C90 60 102 60 95 70Z" fill="#2E7D32" opacity="0.3" />
 </svg>
