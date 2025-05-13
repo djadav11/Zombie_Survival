@@ -1,5 +1,7 @@
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useGameStore } from "@/lib/stores/useGameStore";
+import { useEffect, useState } from "react";
 
 interface VictoryScreenProps {
   score: number;
@@ -8,6 +10,15 @@ interface VictoryScreenProps {
 }
 
 export default function VictoryScreen({ score, wave, onRestart }: VictoryScreenProps) {
+  // Get player upgrades information
+  const { playerUpgrades } = useGameStore();
+  const [showConfetti, setShowConfetti] = useState(true);
+  
+  // Hide confetti after a while to avoid performance issues
+  useEffect(() => {
+    const timer = setTimeout(() => setShowConfetti(false), 5000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div className="flex items-center justify-center min-h-screen">
       <Card className="w-full max-w-md bg-card text-card-foreground border border-primary shadow-lg">
