@@ -20,8 +20,20 @@ let lastSpawnTime = 0;
 let player: GameObj | null = null;
 let gameOverCallback: ((score: number, wave: number) => void) | null = null;
 
+// Player upgrade interface
+export interface PlayerUpgrades {
+  health: number;
+  damage: number;
+  speed: number;
+  fireRate: number;
+}
+
 // Start the main game
-export function startGame(onGameOver: (score: number, wave: number) => void) {
+export function startGame(
+  onGameOver: (score: number, wave: number) => void,
+  gameLevel: number = 1,
+  playerUpgrades: PlayerUpgrades = { health: 0, damage: 0, speed: 0, fireRate: 0 }
+) {
   const k = getKaboom();
   const { playSuccess } = useAudio.getState();
   

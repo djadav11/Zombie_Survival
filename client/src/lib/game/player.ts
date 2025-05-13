@@ -1,24 +1,41 @@
 import { getKaboom } from "./kaboom";
 import { GameObj } from "kaboom";
 import { useAudio } from "../stores/useAudio";
+import { PlayerUpgrades } from "./levels";
 
-// Player properties
-const PLAYER_SPEED = 200;
-const PLAYER_MAX_HEALTH = 100;
-const SHOOT_COOLDOWN = 0.3; // Time in seconds between shots
+// Base player properties
+const BASE_PLAYER_SPEED = 200;
+const BASE_PLAYER_MAX_HEALTH = 100;
+const BASE_BULLET_DAMAGE = 25;
+const BASE_SHOOT_COOLDOWN = 0.3; // Time in seconds between shots
 
 // Create the player game object
-export function createPlayer() {
+export function createPlayer(
+  level: number = 1,
+  upgrades: PlayerUpgrades = { health: 0, damage: 0, speed: 0, fireRate: 0 }
+) {
   const k = getKaboom();
   const { playHit } = useAudio.getState(); // Get audio functions from store
 
+  // Calculate player stats with upgrades
+  const playerSpeed = BASE_PLAYER_SPEED * (1 + (upgrades.speed * 0.15));
+  const playerMaxHealth = BASE_PLAYER_MAX_HEALTH + (upgrades.health * 25);
+  const bulletDamage = BASE_BULLET_DAMAGE + (upgrades.damage * 10);
+  const shootCooldown = BASE_SHOOT_COOLDOWN * (1 - (upgrades.fireRate * 0.1));
+  
+  // Format upgrade info text
+  const upgradeText = upgrades.health > 0 || upgrades.damage > 0 || 
+                      upgrades.speed > 0 || upgrades.fireRate > 0
+    ? `Upgrades: Health +${upgrades.health * 25} | Damage +${upgrades.damage * 10} | Speed +${Math.floor(upgrades.speed * 15)}% | Fire Rate +${Math.floor(upgrades.fireRate * 10)}%`
+    : '';
+  
   // Create the player game object
   const player = k.add([
     k.sprite("player"),
     k.pos(k.width() / 2, k.height() / 2),
     k.area(),
     k.area({ shape: new k.Rect(k.vec2(0), 40, 40) }),
-    k.health(PLAYER_MAX_HEALTH),
+    k.health(playerMaxHealth),
     k.color(1, 1, 1),
     k.rotate(0),
     k.scale(1),
@@ -27,9 +44,13 @@ export function createPlayer() {
     "player", // tag
     {
       lastShootTime: 0,
-      speed: PLAYER_SPEED,
+      speed: playerSpeed,
+      bulletDamage: bulletDamage,
+      shootCooldown: shootCooldown,
       score: 0,
       wave: 1,
+      gameLevel: level,
+      upgradeText: upgradeText,
     },
   ]);
 
@@ -118,7 +139,7 @@ function playerShoot(player: GameObj) {
   const now = k.time();
   
   // Check cooldown
-  if (now - player.lastShootTime < SHOOT_COOLDOWN) {
+  if (now - player.lastShootTime < player.shootCooldown) {
     return;
   }
   
