@@ -17,7 +17,7 @@ export function createGameUI() {
   const controls = [
     "WASD / Arrows: Move",
     "Mouse / Space: Shoot",
-    "Survive as long as possible!"
+    "Survive until Wave 8!"
   ];
   
   // Add control instructions
