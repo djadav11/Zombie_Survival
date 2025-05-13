@@ -3,18 +3,32 @@ import GameContainer from "./components/GameContainer";
 import StartScreen from "./components/StartScreen";
 import GameOverScreen from "./components/GameOverScreen";
 import VictoryScreen from "./components/VictoryScreen";
+import ShopScreen from "./components/ShopScreen";
 import "@fontsource/inter";
 import { useAudio } from "./lib/stores/useAudio";
+import { useGameStore } from "./lib/stores/useGameStore";
 import { Howl } from "howler";
 
 // Define game states
-type GameState = "start" | "playing" | "gameOver" | "victory";
+type GameState = "start" | "playing" | "gameOver" | "victory" | "shop";
 
 function App() {
   // State for tracking the current game state
   const [gameState, setGameState] = useState<GameState>("start");
-  const [score, setScore] = useState(0);
   const [wave, setWave] = useState(0);
+  
+  // Get game state from our store
+  const { 
+    level,
+    currentScore,
+    totalScore,
+    playerUpgrades,
+    setLevel,
+    addScore,
+    resetCurrentScore,
+    purchaseUpgrade,
+    resetGame
+  } = useGameStore();
   
   const { 
     setBackgroundMusic, 
@@ -41,23 +55,48 @@ function App() {
     setSuccessSound(successSfx);
   }, [setBackgroundMusic, setHitSound, setSuccessSound]);
 
-  // Start new game
-  const handleStartGame = () => {
+  // Start new game from beginning (level 1)
+  const handleStartNewGame = () => {
+    resetGame();
     setGameState("playing");
-    setScore(0);
     setWave(1);
   };
-
-  // Handle game over
+  
+  // Continue from current level
+  const handleContinueGame = () => {
+    resetCurrentScore();
+    setGameState("playing");
+    setWave(1);
+  };
+  
+  // Handle shop purchase
+  const handleUpgradePurchase = (upgradeId: string) => {
+    purchaseUpgrade(upgradeId as keyof typeof playerUpgrades);
+  };
+  
+  // Handle proceeding to next level
+  const handleNextLevel = () => {
+    // Move to the next level
+    setLevel((level + 1) as typeof level);
+    setGameState("playing");
+    setWave(1);
+  };
+  
+  // Handle game over or level completion
   const handleGameOver = (finalScore: number, finalWave: number) => {
-    setScore(finalScore);
     setWave(finalWave);
+    addScore(finalScore);
     
     // Check if player won (reached wave 9, which means they completed wave 8)
     if (finalWave >= 9) {
-      setGameState("victory");
+      // Check if this was the final level
+      if (level === 3) {
+        setGameState("victory"); // Game victory
+      } else {
+        setGameState("shop"); // Go to shop between levels
+      }
     } else {
-      setGameState("gameOver");
+      setGameState("gameOver"); // Game over
     }
   };
 
@@ -72,25 +111,46 @@ function App() {
         {isMuted ? "🔇" : "🔊"}
       </button>
 
-      {gameState === "start" && <StartScreen onStartGame={handleStartGame} />}
+      {/* Level indicator (top-left corner) */}
+      {gameState !== "start" && (
+        <div className="absolute top-4 left-4 z-10 p-2 px-4 bg-primary/80 text-primary-foreground rounded-full">
+          Level {level}
+        </div>
+      )}
+
+      {gameState === "start" && <StartScreen onStartGame={handleStartNewGame} />}
       
       {gameState === "playing" && (
-        <GameContainer onGameOver={handleGameOver} />
+        <GameContainer 
+          onGameOver={handleGameOver} 
+          level={level}
+          playerUpgrades={playerUpgrades}
+        />
       )}
       
       {gameState === "gameOver" && (
         <GameOverScreen 
-          score={score} 
+          score={currentScore} 
           wave={wave}
-          onRestart={handleStartGame} 
+          onRestart={level === 1 ? handleStartNewGame : handleContinueGame} 
         />
       )}
       
       {gameState === "victory" && (
         <VictoryScreen 
-          score={score} 
+          score={totalScore} 
           wave={wave}
-          onRestart={handleStartGame} 
+          onRestart={handleStartNewGame} 
+        />
+      )}
+      
+      {gameState === "shop" && (
+        <ShopScreen 
+          level={level}
+          score={currentScore}
+          playerUpgrades={playerUpgrades}
+          onUpgradePurchase={handleUpgradePurchase}
+          onContinue={handleNextLevel}
         />
       )}
     </div>

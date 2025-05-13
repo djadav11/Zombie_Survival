@@ -5,11 +5,20 @@ import { startGame, stopGame } from "../lib/game/levels";
 import { createGameUI, showCountdown, drawGameBoundaries } from "../lib/game/ui";
 import { initGameSounds, cleanupSounds } from "../lib/game/sounds";
 
-interface GameContainerProps {
-  onGameOver: (score: number, wave: number) => void;
+interface PlayerUpgrades {
+  health: number;
+  damage: number;
+  speed: number;
+  fireRate: number;
 }
 
-export default function GameContainer({ onGameOver }: GameContainerProps) {
+interface GameContainerProps {
+  onGameOver: (score: number, wave: number) => void;
+  level: number;
+  playerUpgrades: PlayerUpgrades;
+}
+
+export default function GameContainer({ onGameOver, level, playerUpgrades }: GameContainerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isLoading, setIsLoading] = useState(true);
 
