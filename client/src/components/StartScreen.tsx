@@ -31,7 +31,7 @@ export default function StartScreen({ onStartGame }: StartScreenProps) {
           
           <div className="space-y-2 border border-border rounded-md p-4 bg-muted/50">
             <h3 className="font-bold text-center">Objective:</h3>
-            <p>Survive as many waves as possible. Each wave brings more zombies with increased speed and health.</p>
+            <p>Survive through 8 waves of zombies to win! Each wave brings more zombies with increased speed and health.</p>
           </div>
         </CardContent>
         

@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import GameContainer from "./components/GameContainer";
 import StartScreen from "./components/StartScreen";
 import GameOverScreen from "./components/GameOverScreen";
+import VictoryScreen from "./components/VictoryScreen";
 import "@fontsource/inter";
 import { useAudio } from "./lib/stores/useAudio";
 import { Howl } from "howler";
 
 // Define game states
-type GameState = "start" | "playing" | "gameOver";
+type GameState = "start" | "playing" | "gameOver" | "victory";
 
 function App() {
   // State for tracking the current game state
@@ -51,7 +52,13 @@ function App() {
   const handleGameOver = (finalScore: number, finalWave: number) => {
     setScore(finalScore);
     setWave(finalWave);
-    setGameState("gameOver");
+    
+    // Check if player won (reached wave 9, which means they completed wave 8)
+    if (finalWave >= 9) {
+      setGameState("victory");
+    } else {
+      setGameState("gameOver");
+    }
   };
 
   // Render the appropriate screen based on game state
@@ -73,6 +80,14 @@ function App() {
       
       {gameState === "gameOver" && (
         <GameOverScreen 
+          score={score} 
+          wave={wave}
+          onRestart={handleStartGame} 
+        />
+      )}
+      
+      {gameState === "victory" && (
+        <VictoryScreen 
           score={score} 
           wave={wave}
           onRestart={handleStartGame} 
