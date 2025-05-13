@@ -51,11 +51,15 @@ export default function GameContainer({ onGameOver, level, playerUpgrades }: Gam
       
       // Show countdown before starting
       showCountdown(() => {
-        // Start game after countdown
-        startGame((score, wave) => {
-          // Handle game over by calling the prop callback
-          onGameOver(score, wave);
-        });
+        // Start game after countdown with level and upgrades
+        startGame(
+          (score, wave) => {
+            // Handle game over by calling the prop callback
+            onGameOver(score, wave);
+          },
+          level,
+          playerUpgrades
+        );
       });
     };
     

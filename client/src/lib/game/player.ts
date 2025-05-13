@@ -186,14 +186,17 @@ export function updatePlayerUI(player: GameObj) {
     color: k.rgb(50, 50, 50), // Use color instead of fill
   });
   
+  // Calculate max health with upgrades
+  const maxHealth = BASE_PLAYER_MAX_HEALTH + (player.gameLevel ? (player.playerUpgrades?.health || 0) * 25 : 0);
+  
   // Current health
   k.drawRect({
     pos: k.vec2(20, 20),
-    width: (player.hp() / PLAYER_MAX_HEALTH) * 200,
+    width: (player.hp() / maxHealth) * 200,
     height: 20,
-    color: player.hp() < 30  // Use color instead of fill
+    color: player.hp() < (maxHealth * 0.3)  // Use color instead of fill
       ? k.rgb(255, 50, 50) 
-      : player.hp() < 60 
+      : player.hp() < (maxHealth * 0.6) 
       ? k.rgb(255, 200, 50)
       : k.rgb(50, 200, 50),
   });
@@ -223,4 +226,15 @@ export function updatePlayerUI(player: GameObj) {
     // Use default font
     color: k.rgb(255, 255, 255),
   });
+  
+  // Show upgrade info if player has any upgrades
+  if (player.upgradeText) {
+    k.drawText({
+      text: player.upgradeText,
+      pos: k.vec2(k.width() / 2, k.height() - 40),
+      size: 12,
+      anchor: "center",
+      color: k.rgb(200, 200, 255),
+    });
+  }
 }

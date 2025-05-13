@@ -43,8 +43,12 @@ export function startGame(
   // Reset game state
   gameRunning = true;
   
-  // Create the player
-  player = createPlayer();
+  // Create the player with level and upgrades
+  player = createPlayer(gameLevel, playerUpgrades);
+  
+  // Store the current game level
+  player.gameLevel = gameLevel;
+  player.playerUpgrades = playerUpgrades;
   
   // Start with wave 1
   player.wave = 1;

@@ -1,5 +1,6 @@
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useGameStore } from "@/lib/stores/useGameStore";
 
 interface GameOverScreenProps {
   score: number;
@@ -8,6 +9,8 @@ interface GameOverScreenProps {
 }
 
 export default function GameOverScreen({ score, wave, onRestart }: GameOverScreenProps) {
+  // Get the current game level from the game store
+  const level = useGameStore((state) => state.level);
   return (
     <div className="flex items-center justify-center min-h-screen">
       <Card className="w-full max-w-md bg-card text-card-foreground border border-destructive shadow-lg">
@@ -27,7 +30,12 @@ export default function GameOverScreen({ score, wave, onRestart }: GameOverScree
           </div>
           
           <div className="border border-border rounded-md p-4 bg-muted/50 text-muted-foreground">
-            <p className="text-center">The zombies have overwhelmed you, but your fight will be remembered!</p>
+            <p className="text-center">The zombies have overwhelmed you on Level {level}, but your fight will be remembered!</p>
+            {level > 1 && (
+              <p className="text-center mt-2 text-sm">
+                Thanks to your upgrades, you can continue from Level {level}!
+              </p>
+            )}
           </div>
         </CardContent>
         

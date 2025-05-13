@@ -12,11 +12,16 @@ const ZOMBIE_ATTACK_COOLDOWN = 0.10; // Very short cooldown for rapid attacks
 export function spawnZombie(wave: number, target: GameObj) {
   const k = getKaboom();
   
-  // Increase difficulty with each wave
+  // Get the current game level (or default to 1)
+  const gameLevel = target.gameLevel || 1;
+  
+  // Increase difficulty with each wave and level
+  const levelMultiplier = 1 + ((gameLevel - 1) * 0.25); // 25% increase per level
   const speedMultiplier = 1 + (wave * 0.05);
   const healthMultiplier = 1 + (wave * 0.1);
-  const zombieSpeed = ZOMBIE_SPEED_BASE * speedMultiplier;
-  const zombieHealth = ZOMBIE_HEALTH_BASE * healthMultiplier;
+  
+  const zombieSpeed = ZOMBIE_SPEED_BASE * speedMultiplier * levelMultiplier;
+  const zombieHealth = ZOMBIE_HEALTH_BASE * healthMultiplier * levelMultiplier;
   
   // Determine spawn position (outside the screen edges)
   let spawnPos;
@@ -105,8 +110,12 @@ export function spawnZombie(wave: number, target: GameObj) {
     // Destroy the bullet
     bullet.destroy();
     
+    // Get the player and its bullet damage
+    const player = k.get("player")[0];
+    const bulletDamage = player ? player.bulletDamage : 25;
+    
     // Damage the zombie
-    zombie.hurt(25);
+    zombie.hurt(bulletDamage);
     
     // Flash the zombie
     zombie.color = k.rgb(1, 1, 1);
