@@ -220,11 +220,20 @@ export function updatePlayerUI(player: GameObj) {
   });
   
   k.drawText({
-    text: `Wave: ${player.wave}`,
+    text: `Wave: ${player.wave}/8`,
     pos: k.vec2(k.width() - 150, 50),
     size: 16,
     // Use default font
     color: k.rgb(255, 255, 255),
+  });
+  
+  // Level indicator
+  k.drawText({
+    text: `Level: ${player.gameLevel}/3`,
+    pos: k.vec2(k.width() - 150, 75),
+    size: 16,
+    // Use default font
+    color: k.rgb(200, 255, 200),
   });
   
   // Show upgrade info if player has any upgrades
